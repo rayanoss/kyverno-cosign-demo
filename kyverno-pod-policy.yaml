@@ -1,0 +1,26 @@
+apiVersion: kyverno.io/v1
+kind: ClusterPolicy
+metadata:
+  name: require-signed-images
+spec:
+  validationFailureAction: Enforce
+  background: false
+  rules:
+    - name: check-image-signature
+      match:
+        any:
+          - resources:
+              kinds:
+                - Pod
+              namespaces:
+                - test-app
+      verifyImages:
+        - imageReferences:
+            - "docker.io/rayanos/*" 
+          attestors:
+            - entries:
+              - keyless:
+                  issuer: "https://token.actions.githubusercontent.com"
+                  subjectRegExp: "^https://github.com/rayanoss/kyverno-cosign-demo/"
+                  rekor:
+                    url: "https://rekor.sigstore.dev"
