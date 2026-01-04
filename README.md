@@ -39,9 +39,7 @@ This allows you to validate the full flow locally in just a few minutes.
 ## Related article
 
 This repository is a companion to the following article, which explains the concepts and design decisions in detail:
-
- **Securing Kubernetes Deployments with Kyverno and Cosign**  
-<PUT_ARTICLE_LINK_HERE>
+[Securing Kubernetes Deployments with Kyverno and Cosign](https://rayanekadi.com/blog/securing-kubernetes-deployments-with-kyverno-and-cosign/)
 
 
 
